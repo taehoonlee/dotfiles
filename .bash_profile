@@ -4,3 +4,7 @@ if [[ $HOSTNAME != *"MacBook-Pro"* ]]; then
 fi
 export PS1="\[\e[0;97m\e[46m\] 🕐  \t \[\e[0m\]\[\e[0;97m\e[100m\] \u${PS1HOSTNAME} \[\e[0m\]\[\e[0;97m\e[43m\] 💻  \W \[\e[0;37m\] \$ \[\e[0m\]"
 export CONDA_PS1_BACKUP=$PS1
+
+export CLICOLOR=1
+export LSCOLORS=exfxcxdxcxegedabagaced
+alias ls='ls -lh'
