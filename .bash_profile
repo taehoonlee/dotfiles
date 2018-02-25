@@ -8,6 +8,13 @@ fi
 # User specific environment and startup programs
 export PATH=$PATH:$HOME/.local/bin:$HOME/bin
 
+# Suppress TensorFlow warnings
+export TF_CPP_MIN_LOG_LEVEL=2 # suppress TensorFlow warnings
+
+# Variables for TensorFlow Serving Compile
+export PYTHON_BIN_PATH="/home/$USER/.conda/envs/$USER/bin/python"
+export PYTHON_LIB_PATH="/home/$USER/.conda/envs/$USER/lib/python2.7/site-packages"
+
 export PS1HOSTNAME=""
 if [[ $HOSTNAME != *"local"* ]]; then
         export PS1HOSTNAME="@${HOSTNAME}"
