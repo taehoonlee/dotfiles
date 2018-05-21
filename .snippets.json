@@ -1,0 +1,50 @@
+{
+    "snippets" : [
+        {
+            "name" : "tensornets",
+            "code" : [
+                "import numpy as np",
+                "import tensorflow as tf",
+                "import tensornets as nets",
+                "",
+                "print('tensorflow: ' + tf.__version__)",
+                "print('tensornets: ' + nets.__version__)",
+                "",
+                "inputs = tf.placeholder(tf.float32, [None, 224, 224, 3])",
+                "model = nets.ResNet50(inputs)",
+                "",
+                "img = nets.utils.load_img('cat.png', target_size=256, crop_size=224)",
+                "",
+                "with tf.Session() as sess:",
+                "    sess.run(model.pretrained())",
+                "    preds = sess.run(model, {inputs: model.preprocess(img)})",
+                "",
+                "print(nets.utils.decode_predictions(preds, top=3)[0])"
+            ]
+        },
+        {
+            "name" : "keras-app",
+            "code" : [
+                "import numpy as np",
+                "from keras.applications.resnet50 import ResNet50",
+                "from keras.applications.resnet50 import preprocess_input, decode_predictions",
+                "",
+                "model = ResNet50(weights='imagenet')",
+                "",
+                "img = nets.utils.load_img('cat.png', target_size=256, crop_size=224)",
+                "",
+                "preds = model.predict(preprocess_input(img))",
+                "",
+                "print(decode_predictions(preds, top=3)[0])"
+            ]
+        },
+        {
+            "name" : "keras-middle",
+            "code" : [
+                "from keras import backend as K",
+                "",
+                "outs = K.function([model.layers[0].input], [l.output for l in model.layers])([x])"
+            ]
+        }
+    ]
+}
