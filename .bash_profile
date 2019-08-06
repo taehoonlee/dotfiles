@@ -30,4 +30,6 @@ else
         alias ls='ls --color=always -lh'
 fi
 
+export THEANO_FLAGS=device=gpu,mode=FAST_RUN,floatX=float32
+
 export COMMON_TRAIN_FLAGS="--labels_offset=1 --dataset_name=imagenet --dataset_split_name=train --dataset_dir=/home/taehoonlee/Data/imagenet/tfrecords"
